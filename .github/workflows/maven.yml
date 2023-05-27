@@ -11,7 +11,7 @@ name: Java CI with Maven
 on: push
 
 env:
-  BRANCH_NAME: GITHUB_HEAD_REF:-GITHUB_REF#refs/heads/
+  BRANCH_NAME: "${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
 
 jobs:
   build:
