@@ -8,11 +8,10 @@
 
 name: Java CI with Maven
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: push
+
+env:
+  BRANCH_NAME: ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
 
 jobs:
   build:
@@ -40,7 +39,7 @@ jobs:
     environment: DEV
     steps:
       - name: Deploying to DEV
-        run: echo "Deploying to DEV"
+        run: echo "Deploying to DEV. Branch: ${BRANCH_NAME}"
 
 
   deploy_to_prod:
@@ -49,4 +48,4 @@ jobs:
     environment: PROD
     steps:
       - name: Deploying to PROD
-        run: echo "Deploying to PROD"
+        run: echo "Deploying to PROD. Branch: ${BRANCH_NAME}"
