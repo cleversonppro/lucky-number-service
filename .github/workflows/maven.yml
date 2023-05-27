@@ -38,7 +38,8 @@ jobs:
     steps:
       - name: Deploying to DEV
         run: | 
-          echo "Deploying to DEV. Branch: ${{github.ref}}"
+          echo "Deploying to DEV. Branch: ${{ github.ref }}"
+          echo "MY_VARIABLE = ${{ MY_VARIABLE }}"
 
 
   deploy_to_prod:
@@ -49,4 +50,5 @@ jobs:
     steps:
       - name: Deploying to PROD
         run: | 
-          echo "Deploying to PROD. Branch: ${{github.ref}}"
+          echo "Deploying to PROD. Branch: ${{ github.ref }}"
+          echo "MY_VARIABLE = ${{ MY_VARIABLE }}"
