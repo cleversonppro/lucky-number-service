@@ -10,9 +10,6 @@ name: Java CI with Maven
 
 on: push
 
-env:
-  BRANCH_NAME: "${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
-
 jobs:
   build:
 
@@ -41,16 +38,15 @@ jobs:
     steps:
       - name: Deploying to DEV
         run: | 
-          echo "Deploying to DEV. Branch: ${BRANCH_NAME}"
-          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+          echo "Deploying to DEV. Branch: ${ github.ref }"
 
 
   deploy_to_prod:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     environment: PROD
     steps:
       - name: Deploying to PROD
         run: | 
-          echo "Deploying to PROD. Branch: ${BRANCH_NAME}"
+          echo "Deploying to PROD. Branch: ${ github.ref }"
