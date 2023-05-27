@@ -39,7 +39,8 @@ jobs:
     environment: DEV
     steps:
       - name: Deploying to DEV
-        run: echo "Deploying to DEV. Branch: ${BRANCH_NAME}"
+        run: | 
+          echo "Deploying to DEV. Branch: ${BRANCH_NAME}"
 
 
   deploy_to_prod:
@@ -48,4 +49,5 @@ jobs:
     environment: PROD
     steps:
       - name: Deploying to PROD
-        run: echo "Deploying to PROD. Branch: ${BRANCH_NAME}"
+        run: | 
+          echo "Deploying to PROD. Branch: ${BRANCH_NAME}"
