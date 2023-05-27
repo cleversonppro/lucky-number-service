@@ -42,6 +42,7 @@ jobs:
       - name: Deploying to DEV
         run: | 
           echo "Deploying to DEV. Branch: ${BRANCH_NAME}"
+          echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
 
 
   deploy_to_prod:
