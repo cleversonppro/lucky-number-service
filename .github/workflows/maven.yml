@@ -41,7 +41,7 @@ jobs:
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
       - name: Printing Variable value
         run: |
-          echo "MY_VARIABLE = ${{ MY_VARIABLE }}"
+          echo "MY_VARIABLE = $MY_VARIABLE"
 
 
   deploy_to_prod:
@@ -55,4 +55,4 @@ jobs:
           echo "Deploying to PROD. Branch: ${{ github.ref }}"
       - name: Printing Variable value
         run: |
-          echo "MY_VARIABLE = ${{ MY_VARIABLE }}"
+          echo "MY_VARIABLE = $MY_VARIABLE"
