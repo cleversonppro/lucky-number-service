@@ -38,13 +38,13 @@ jobs:
     steps:
       - name: Deploying to DEV
         run: | 
-          echo "Deploying to DEV. Branch: ${ github.ref }"
+          echo "Deploying to DEV. Branch: ${ GITHUB_REF }"
 
 
   deploy_to_prod:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     environment: PROD
     steps:
       - name: Deploying to PROD
