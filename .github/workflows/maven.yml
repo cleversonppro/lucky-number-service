@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: Deploying to DEV
         run: | 
-          echo "Deploying to DEV. Branch: ${ GITHUB_REF }"
+          echo "Deploying to DEV. Branch: ${github.ref}"
 
 
   deploy_to_prod:
@@ -49,4 +49,4 @@ jobs:
     steps:
       - name: Deploying to PROD
         run: | 
-          echo "Deploying to PROD. Branch: ${ github.ref }"
+          echo "Deploying to PROD. Branch: ${github.ref}"
