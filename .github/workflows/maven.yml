@@ -39,12 +39,12 @@ jobs:
       - name: Deploying to DEV
         env:
           APPLICATION_ENVIRONMENT: development
-          GITHUB_TOKEN: ${{ secrets.ARGO_TOKEN }}
+          ARGO_REPO_TOKEN: ${{ secrets.ARGO_TOKEN }}
         run: | 
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
           echo "MY_VARIABLE = ${{ vars.MY_VARIABLE }}"
           
-          git clone https://user:$GITHUB_TOKEN@github.com/cleversonppro/argo-cd
+          git clone https://user:$ARGO_REPO_TOKEN@github.com/cleversonppro/argo-cd
           ls argo_repo
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
           git config --unset-all http.https://github.com/.extraheader
