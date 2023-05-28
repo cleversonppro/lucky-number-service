@@ -39,6 +39,7 @@ jobs:
     needs: build
     if: github.event_name != 'pull_request'
     environment: DEV
+    permissions: write-all
     steps:
       - name: Deploying to DEV
         env:
