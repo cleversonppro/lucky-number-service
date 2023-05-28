@@ -43,6 +43,7 @@ jobs:
       - name: Deploying to DEV
         env:
           APPLICATION_ENVIRONMENT: development
+          HELM_RELEASE_NAME: my_app
         run: | 
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
           echo "MY_VARIABLE = ${{ vars.MY_VARIABLE }}"
@@ -53,7 +54,7 @@ jobs:
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
           ls
           
-          cat << EOF > my_app.yaml
+          cat << EOF > ${HELM_RELEASE_NAME}.yaml
           apiVersion: argoproj.io/v1alpha1
           kind: Application
           metadata:
@@ -63,7 +64,12 @@ jobs:
               - resources-finalizer.argocd.argoproj.io
           EOF
           
-          cat my_app.yaml
+          git config user.email 'pipeline@ppro.com'
+          git config user.name 'Gitlab CI Latam'
+          cat ${HELM_RELEASE_NAME}.yaml
+          git add ${HELM_RELEASE_NAME}.yaml
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push
           
           
 
