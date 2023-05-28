@@ -62,6 +62,18 @@ jobs:
             namespace: argocd
             finalizers:
               - resources-finalizer.argocd.argoproj.io
+            spec:
+              destination:
+                namespace: ${K8S_NAMESPACE}
+                server: https://kubernetes.default.svc
+              project: ${ARGO_PROJECT}
+              revisionHistoryLimit: 10
+              syncPolicy:
+                syncOptions:
+                  - CreateNamespace=true
+                automated:
+                  prune: true
+                  selfHeal: true
           EOF
           
           git config user.email 'pipeline@ppro.com'
