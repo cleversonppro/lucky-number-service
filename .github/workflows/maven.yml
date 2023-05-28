@@ -44,8 +44,6 @@ jobs:
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
           echo "MY_VARIABLE = ${{ vars.MY_VARIABLE }}"
           
-          apt-get update
-          apt-get install -y git
           git clone https://user:$GITHUB_TOKEN@github.com/cleversonppro/argo-cd
           ls argo_repo
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
