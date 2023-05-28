@@ -39,7 +39,7 @@ jobs:
       - name: Deploying to DEV
         env:
           APPLICATION_ENVIRONMENT: development
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ARGO_TOKEN }}
         run: | 
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
           echo "MY_VARIABLE = ${{ vars.MY_VARIABLE }}"
