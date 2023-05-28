@@ -50,6 +50,7 @@ jobs:
           git clone https://user:$ARGO_REPO_TOKEN@github.com/cleversonppro/argo-cd ./argo_repo
           ls argo_repo
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
+          ls
           git config --unset-all http.https://github.com/.extraheader
 
 
