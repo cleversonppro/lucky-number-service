@@ -39,7 +39,6 @@ jobs:
     needs: build
     if: github.event_name != 'pull_request'
     environment: DEV
-    permissions: write-all
     steps:
       - name: Deploying to DEV
         env:
@@ -53,7 +52,6 @@ jobs:
           echo "Project folder: argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}"
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
           ls
-          git config --unset-all http.https://github.com/.extraheader
 
 
   deploy_to_prod:
