@@ -52,6 +52,20 @@ jobs:
           echo "Project folder: argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}"
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
           ls
+          
+          cat << EOF > my_app.yaml
+          apiVersion: argoproj.io/v1alpha1
+          kind: Application
+          metadata:
+            name: ${APPLICATION_ENVIRONMENT}
+            namespace: argocd
+            finalizers:
+              - resources-finalizer.argocd.argoproj.io
+          EOF
+          
+          cat my_app.yaml
+          
+          
 
 
   deploy_to_prod:
