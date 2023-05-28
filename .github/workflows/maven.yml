@@ -44,7 +44,7 @@ jobs:
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
           echo "MY_VARIABLE = ${{ vars.MY_VARIABLE }}"
           
-          git clone https://user:$ARGO_REPO_TOKEN@github.com/cleversonppro/argo-cd
+          git clone https://user:$ARGO_REPO_TOKEN@github.com/cleversonppro/argo-cd ./argo_repo
           ls argo_repo
           cd argo_repo/${APPLICATION_ENVIRONMENT}/${ARGO_PROJECT}
           git config --unset-all http.https://github.com/.extraheader
