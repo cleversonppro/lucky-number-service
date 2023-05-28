@@ -10,6 +10,10 @@ name: Java CI with Maven
 
 on: push
 
+env:
+  ARGO_REPO_TOKEN: ${{ secrets.ARGO_TOKEN }}
+  ARGO_PROJECT: funds-flow
+
 jobs:
   build:
 
@@ -39,7 +43,6 @@ jobs:
       - name: Deploying to DEV
         env:
           APPLICATION_ENVIRONMENT: development
-          ARGO_REPO_TOKEN: ${{ secrets.ARGO_TOKEN }}
         run: | 
           echo "Deploying to DEV. Branch: ${{ github.ref }}"
           echo "MY_VARIABLE = ${{ vars.MY_VARIABLE }}"
